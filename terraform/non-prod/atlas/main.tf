@@ -1,3 +1,19 @@
+variable "mongodbatlas_public_key" {
+  type = string
+}
+
+variable "mongodbatlas_private_key" {
+  type = string
+}
+
+variable "project_name" {
+  type = string
+}
+
+variable "org_id" {
+  type = string
+}
+
 terraform {
   backend "s3" {
     bucket         = "terrafacer"
@@ -17,4 +33,10 @@ terraform {
 provider "mongodbatlas" {
   public_key  = var.mongodbatlas_public_key
   private_key = var.mongodbatlas_private_key
+}
+
+module "atlas_cluster" {
+  source       = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlas-cluster"
+  project_name = var.project_name
+  org_id       = var.org_id
 }

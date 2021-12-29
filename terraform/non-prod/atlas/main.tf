@@ -14,6 +14,10 @@ variable "org_id" {
   type = string
 }
 
+variable "cluster_name" {
+  type = string
+}
+
 terraform {
   backend "s3" {
     bucket         = "terrafacer"
@@ -39,4 +43,5 @@ module "atlas_cluster" {
   source       = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlas-cluster"
   project_name = var.project_name
   org_id       = var.org_id
+  cluster_name = var.cluster_name
 }

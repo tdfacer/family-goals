@@ -1,0 +1,11 @@
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+node_modules
+venv
+*.log
+**/settings.json
+.test
+.test/*
+.serverless

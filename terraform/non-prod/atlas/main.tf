@@ -48,10 +48,10 @@ provider "mongodbatlas" {
 }
 
 module "atlas_cluster" {
-  source                       = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.5"
-  project_name                 = var.project_name
-  org_id                       = var.org_id
-  cluster_name                 = var.cluster_name
-  create_cluster               = var.create_cluster
-  mongodbatlas_cluster_version = var.cluster_version
+  source          = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.5"
+  project_name    = var.project_name
+  org_id          = var.org_id
+  cluster_name    = var.cluster_name
+  create_cluster  = var.create_cluster
+  cluster_version = var.cluster_version
 }

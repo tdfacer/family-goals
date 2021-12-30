@@ -26,6 +26,18 @@ variable "cluster_version" {
   type = string
 }
 
+variable "database_name" {
+  type = string
+}
+
+variable "user_name" {
+  type = string
+}
+
+variable "user_password" {
+  type = string
+}
+
 terraform {
   backend "s3" {
     bucket         = "terrafacer"
@@ -48,10 +60,13 @@ provider "mongodbatlas" {
 }
 
 module "atlas_cluster" {
-  source          = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.5"
+  source          = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.7"
   project_name    = var.project_name
   org_id          = var.org_id
   cluster_name    = var.cluster_name
   create_cluster  = var.create_cluster
   cluster_version = var.cluster_version
+  database_name   = var.database_name
+  user_name       = var.user_name
+  user_password   = var.user_password
 }

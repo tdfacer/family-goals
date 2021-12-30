@@ -38,6 +38,14 @@ variable "user_password" {
   type = string
 }
 
+# access
+variable "whitelist_ips" {
+  type = map(object({
+    ip          = string
+    description = string
+  }))
+}
+
 terraform {
   backend "s3" {
     bucket         = "terrafacer"
@@ -60,7 +68,7 @@ provider "mongodbatlas" {
 }
 
 module "atlas_cluster" {
-  source          = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.8"
+  source          = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/atlas-cluster?ref=atlasv0.0.9"
   project_name    = var.project_name
   org_id          = var.org_id
   cluster_name    = var.cluster_name
@@ -69,4 +77,5 @@ module "atlas_cluster" {
   database_name   = var.database_name
   user_name       = var.user_name
   user_password   = var.user_password
+  whitelist_ips   = var.whitelist_ips
 }

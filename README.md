@@ -17,4 +17,6 @@ If using the free-tier Atlas cluster, the API will not support creation. To get 
 
 * Note: you will need the project ID for the import command
 * ID can can obtained by executing  `terraform state show module.atlas_cluster.mongodbatlas_project.project`
-* Import command for the cluster: `terraform import module.atlas_cluster.mongodbatlas_cluster.cluster-test <project_id>-<cluster_name>`
+* Import command for the cluster: `terraform import module.atlas_cluster.mongodbatlas_cluster.cluster-test <project_id>-<cluster_name>[0]`
+  * Note: Make sure to include the index, `[0]` suffix, or because we are using `count` in the module
+  * If the count is not specified, terraform will detect a resource change and try to replace the cluster with this action specified: `delete_because_wrong_repetition`

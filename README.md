@@ -21,6 +21,14 @@ If using the free-tier Atlas cluster, the API will not support creation. To get 
   * Note: Make sure to include the index, `[0]` suffix, or because we are using `count` in the module
   * If the count is not specified, terraform will detect a resource change and try to replace the cluster with this action specified: `delete_because_wrong_repetition`
 
-## Get secret from access key
+## Secrets
+
+### Get secret from access key
 
 * `terraform show -json | jq -r '.values.root_module.child_modules[].resources[] | select(.name|contains("access_key")) |.values.id,.values.secret'`
+
+### Add secret to github repo
+
+* Go to settings -> secrets
+* Add new repository secret
+* Add `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION`

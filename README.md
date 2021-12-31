@@ -20,3 +20,7 @@ If using the free-tier Atlas cluster, the API will not support creation. To get 
 * Import command for the cluster: `terraform import module.atlas_cluster.mongodbatlas_cluster.cluster-test <project_id>-<cluster_name>[0]`
   * Note: Make sure to include the index, `[0]` suffix, or because we are using `count` in the module
   * If the count is not specified, terraform will detect a resource change and try to replace the cluster with this action specified: `delete_because_wrong_repetition`
+
+## Get secret from access key
+
+* `terraform show -json | jq -r '.values.root_module.child_modules[].resources[] | select(.name|contains("access_key")) |.values.id,.values.secret'`

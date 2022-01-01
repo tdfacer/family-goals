@@ -26,7 +26,7 @@ variable "acm_certificate_arn" {
 }
 
 module "static_site" {
-  source = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/static-site?ref=v2.2.1"
+  source = "git::https://github.com/tdfacer/terrafacer.git//terraform/modules/static-site?ref=v2.2.3"
   # uncomment to use local module for dev
   # source = "/home/trevor/code/terrafacer/terraform/modules/static-site"
 
